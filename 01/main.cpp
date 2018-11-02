@@ -3,18 +3,17 @@
 
 using namespace std;
 
-//todo cambiar a busqueda binaria
-
 /*          n = (fin - ini)
  *
  *          | c1                n = 0, 1;
  *      T = |
- *          | T(n - 2) + c2
+ *          | T(n/2) + c2       n > 1;
  *
- *      T € O(n)
+ *      T € O(log n)
  */
 bool  elementoSituado(const  vector <int >& v, int ini , int  fin) {
     bool bienSituado = false;
+    int mit = (ini + fin) / 2;
 
     // casos base
     if (ini == fin) { // impares
@@ -25,12 +24,11 @@ bool  elementoSituado(const  vector <int >& v, int ini , int  fin) {
     }
 
     // proceso recursivo
-    else if (!elementoSituado(v, ini + 1, fin - 1)) {
-        bienSituado = (v[ini] == ini) || (v[fin] == fin);
-
+    else if (mit < v[mit]) {
+        bienSituado = elementoSituado(v, ini, mit);
     }
     else {
-        bienSituado = true;
+        bienSituado = elementoSituado(v, mit, fin);
     }
 
     return bienSituado;
