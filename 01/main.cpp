@@ -1,3 +1,7 @@
+// Grupo 22 - Belén Solla, Dorian Sanz
+
+// Se usa el esquema de la búsqueda binaria, puesto que el vector que nos dan está ordenado
+
 #include <iostream>
 #include <vector>
 
